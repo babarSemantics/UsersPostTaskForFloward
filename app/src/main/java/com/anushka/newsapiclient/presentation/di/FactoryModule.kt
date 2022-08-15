@@ -2,7 +2,7 @@ package com.anushka.newsapiclient.presentation.di
 
 import android.app.Application
 import com.anushka.newsapiclient.domain.usecase.*
-import com.anushka.newsapiclient.presentation.viewmodel.NewsViewModelFactory
+import com.anushka.newsapiclient.presentation.viewmodel.UsersViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,21 +14,15 @@ import javax.inject.Singleton
 class FactoryModule {
     @Singleton
     @Provides
-  fun provideNewsViewModelFactory(
+  fun provideUsersViewModelFactory(
      application: Application,
-     getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
-     getSearchedNewsUseCase: GetSearchedNewsUseCase,
-     saveNewsUseCase: SaveNewsUseCase,
-     getSavedNewsUseCase: GetSavedNewsUseCase,
-     deleteSavedNewsUseCase: DeleteSavedNewsUseCase
-  ):NewsViewModelFactory{
-      return NewsViewModelFactory(
+     getUsersUseCase: GetUsersUseCase,
+     postsUseCase: GetPostsUseCase
+  ):UsersViewModelFactory{
+      return UsersViewModelFactory(
           application,
-          getNewsHeadlinesUseCase,
-          getSearchedNewsUseCase,
-          saveNewsUseCase,
-          getSavedNewsUseCase,
-          deleteSavedNewsUseCase
+          getUsersUseCase,
+          postsUseCase
       )
   }
 

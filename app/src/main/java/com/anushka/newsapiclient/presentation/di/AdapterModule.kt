@@ -1,6 +1,7 @@
 package com.anushka.newsapiclient.presentation.di
 
-import com.anushka.newsapiclient.presentation.adapter.NewsAdapter
+import com.anushka.newsapiclient.presentation.adapter.PostsAdapter
+import com.anushka.newsapiclient.presentation.adapter.UsersAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,13 @@ import javax.inject.Singleton
 class AdapterModule {
    @Singleton
    @Provides
-   fun provideNewsAdapter():NewsAdapter{
-       return NewsAdapter()
+   fun provideUsersAdapter():UsersAdapter{
+       return UsersAdapter()
    }
+
+    @Singleton
+    @Provides
+    fun providePostsAdapter():PostsAdapter{
+        return PostsAdapter()
+    }
 }

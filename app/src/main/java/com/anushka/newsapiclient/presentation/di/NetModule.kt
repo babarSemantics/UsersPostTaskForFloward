@@ -1,7 +1,7 @@
 package com.anushka.newsapiclient.presentation.di
 
 import com.anushka.newsapiclient.BuildConfig
-import com.anushka.newsapiclient.data.api.NewsAPIService
+import com.anushka.newsapiclient.data.api.UsersPostPIService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,8 +24,8 @@ class NetModule {
 
     @Singleton
     @Provides
-    fun provideNewsAPIService(retrofit: Retrofit):NewsAPIService{
-        return retrofit.create(NewsAPIService::class.java)
+    fun provideNewsAPIService(retrofit: Retrofit):UsersPostPIService{
+        return retrofit.create(UsersPostPIService::class.java)
     }
 
 

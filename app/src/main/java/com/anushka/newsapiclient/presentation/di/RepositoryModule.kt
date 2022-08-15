@@ -1,10 +1,11 @@
 package com.anushka.newsapiclient.presentation.di
 
-import com.anushka.newsapiclient.data.repository.NewsRepositoryImpl
-import com.anushka.newsapiclient.data.repository.dataSource.NewsLocalDataSource
-import com.anushka.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
-import com.anushka.newsapiclient.data.repository.dataSourceImpl.NewsRemoteDataSourceImpl
-import com.anushka.newsapiclient.domain.repository.NewsRepository
+import com.anushka.newsapiclient.data.repository.PostsRepositoryImpl
+import com.anushka.newsapiclient.data.repository.UsersRepositoryImpl
+import com.anushka.newsapiclient.data.repository.dataSource.PostsRemoteDataSource
+import com.anushka.newsapiclient.data.repository.dataSource.UsersRemoteDataSource
+import com.anushka.newsapiclient.domain.repository.PostsRepository
+import com.anushka.newsapiclient.domain.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,13 +18,21 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideNewsRepository(
-        newsRemoteDataSource: NewsRemoteDataSource,
-        newsLocalDataSource: NewsLocalDataSource
-    ): NewsRepository {
-        return NewsRepositoryImpl(
-            newsRemoteDataSource,
-            newsLocalDataSource
+    fun provideUsersRepository(
+        usersRemoteDataSource: UsersRemoteDataSource
+    ): UsersRepository {
+        return UsersRepositoryImpl(
+            usersRemoteDataSource
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun providePostsRepository(
+        postsRemoteDataSource: PostsRemoteDataSource
+    ): PostsRepository {
+        return PostsRepositoryImpl(
+            postsRemoteDataSource
         )
     }
 

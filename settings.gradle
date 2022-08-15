@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "NewsAPIClient"
+rootProject.name = "TaskForFloward"

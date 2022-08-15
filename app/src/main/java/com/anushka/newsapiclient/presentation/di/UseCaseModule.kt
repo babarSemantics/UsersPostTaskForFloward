@@ -1,6 +1,7 @@
 package com.anushka.newsapiclient.presentation.di
 
-import com.anushka.newsapiclient.domain.repository.NewsRepository
+import com.anushka.newsapiclient.domain.repository.PostsRepository
+import com.anushka.newsapiclient.domain.repository.UsersRepository
 import com.anushka.newsapiclient.domain.usecase.*
 import dagger.Module
 import dagger.Provides
@@ -13,43 +14,20 @@ import javax.inject.Singleton
 class UseCaseModule {
    @Singleton
    @Provides
-   fun provideGetNewsheadLinesUseCase(
-       newsRepository: NewsRepository
-   ):GetNewsHeadlinesUseCase{
-      return GetNewsHeadlinesUseCase(newsRepository)
+   fun provideGetUsersUseCase(
+       usersRepository: UsersRepository
+   ):GetUsersUseCase{
+      return GetUsersUseCase(usersRepository)
    }
 
    @Singleton
    @Provides
-   fun provideGetSearchedNewsUseCase(
-      newsRepository: NewsRepository
-   ):GetSearchedNewsUseCase{
-      return GetSearchedNewsUseCase(newsRepository)
+   fun provideGetPostsUseCase(
+      postsRepository: PostsRepository
+   ):GetPostsUseCase{
+      return GetPostsUseCase(postsRepository)
    }
 
-   @Singleton
-   @Provides
-   fun provideSaveNewsUseCase(
-      newsRepository: NewsRepository
-   ):SaveNewsUseCase{
-      return SaveNewsUseCase(newsRepository)
-   }
-
-   @Singleton
-   @Provides
-   fun provideGetSavedNewsUseCase(
-      newsRepository: NewsRepository
-   ):GetSavedNewsUseCase{
-      return GetSavedNewsUseCase(newsRepository)
-   }
-
-   @Singleton
-   @Provides
-   fun provideDeleteSavedNewsUseCase(
-      newsRepository: NewsRepository
-   ):DeleteSavedNewsUseCase{
-      return DeleteSavedNewsUseCase(newsRepository)
-   }
 }
 
 

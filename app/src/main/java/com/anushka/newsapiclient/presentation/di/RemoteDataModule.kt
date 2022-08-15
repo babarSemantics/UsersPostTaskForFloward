@@ -1,8 +1,10 @@
 package com.anushka.newsapiclient.presentation.di
 
-import com.anushka.newsapiclient.data.api.NewsAPIService
-import com.anushka.newsapiclient.data.repository.dataSource.NewsRemoteDataSource
-import com.anushka.newsapiclient.data.repository.dataSourceImpl.NewsRemoteDataSourceImpl
+import com.anushka.newsapiclient.data.api.UsersPostPIService
+import com.anushka.newsapiclient.data.repository.dataSource.PostsRemoteDataSource
+import com.anushka.newsapiclient.data.repository.dataSource.UsersRemoteDataSource
+import com.anushka.newsapiclient.data.repository.dataSourceImpl.PostsRemoteDataSourceImpl
+import com.anushka.newsapiclient.data.repository.dataSourceImpl.UsersRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,10 +17,18 @@ class RemoteDataModule {
 
     @Singleton
     @Provides
-    fun provideNewsRemoteDataSource(
-        newsAPIService: NewsAPIService
-    ):NewsRemoteDataSource{
-       return NewsRemoteDataSourceImpl(newsAPIService)
+    fun provideUserRemoteDataSource(
+        usersPostPIService: UsersPostPIService
+    ): UsersRemoteDataSource {
+       return UsersRemoteDataSourceImpl(usersPostPIService)
+    }
+
+    @Singleton
+    @Provides
+    fun providePostsRemoteDataSource(
+        usersPostPIService: UsersPostPIService
+    ): PostsRemoteDataSource {
+        return PostsRemoteDataSourceImpl(usersPostPIService)
     }
 
 }
