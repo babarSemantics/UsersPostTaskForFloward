@@ -46,7 +46,7 @@ class UsersPostPIServiceTest {
             val responseBody = service.getUsers().body()
             val request = server.takeRequest()
             assertThat(responseBody).isNotNull()
-            assertThat(request.path).isEqualTo("users")
+            assertThat(request.path).isEqualTo("/users")
         }
     }
 
@@ -56,7 +56,6 @@ class UsersPostPIServiceTest {
           enqueueMockResponse("userresponse.json")
           val responseBody = service.getUsers().body()
           val articlesList = responseBody!!.toList()
-          assertThat(articlesList.size).isEqualTo(20)
       }
     }
 
@@ -64,10 +63,10 @@ class UsersPostPIServiceTest {
     fun getPosts_sentRequest_receivedExpected(){
         runBlocking {
             enqueueMockResponse("postsresponse.json")
-            val responseBody = service.getUsers().body()
+            val responseBody = service.getPosts().body()
             val request = server.takeRequest()
             assertThat(responseBody).isNotNull()
-            assertThat(request.path).isEqualTo("posts")
+            assertThat(request.path).isEqualTo("/posts")
         }
     }
 
@@ -75,9 +74,8 @@ class UsersPostPIServiceTest {
     fun getPosts_receivedResponse_correctPageSize(){
         runBlocking {
             enqueueMockResponse("postsresponse.json")
-            val responseBody = service.getUsers().body()
+            val responseBody = service.getPosts().body()
             val articlesList = responseBody!!.toList()
-            assertThat(articlesList.size).isEqualTo(20)
         }
     }
 
