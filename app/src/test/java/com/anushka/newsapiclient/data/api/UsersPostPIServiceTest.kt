@@ -46,7 +46,7 @@ class UsersPostPIServiceTest {
             val responseBody = service.getUsers().body()
             val request = server.takeRequest()
             assertThat(responseBody).isNotNull()
-            assertThat(request.path).isEqualTo("/users")
+            assertThat(request.path).isEqualTo("users")
         }
     }
 
@@ -66,7 +66,7 @@ class UsersPostPIServiceTest {
             val responseBody = service.getPosts().body()
             val request = server.takeRequest()
             assertThat(responseBody).isNotNull()
-            assertThat(request.path).isEqualTo("/posts")
+            assertThat(request.path).isEqualTo("posts")
         }
     }
 

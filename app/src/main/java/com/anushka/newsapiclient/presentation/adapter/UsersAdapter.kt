@@ -1,11 +1,14 @@
 package com.anushka.newsapiclient.presentation.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.anushka.newsapiclient.MainActivity
+import com.anushka.newsapiclient.UsersFragment
 import com.anushka.newsapiclient.data.model.User
 import com.anushka.newsapiclient.databinding.UserListItemBinding
 import com.bumptech.glide.Glide
@@ -29,7 +32,7 @@ class UsersAdapter:RecyclerView.Adapter<UsersAdapter.NewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val binding = UserListItemBinding
             .inflate(LayoutInflater.from(parent.context),parent,false)
-        return NewsViewHolder(binding)
+        return NewsViewHolder(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
@@ -42,11 +45,14 @@ class UsersAdapter:RecyclerView.Adapter<UsersAdapter.NewsViewHolder>() {
     }
 
     inner class NewsViewHolder(
-        private val binding:UserListItemBinding):
+        private val binding:UserListItemBinding,
+        private val context:Context,
+        ):
         RecyclerView.ViewHolder(binding.root){
            fun bind(user: User){
                Log.i("MYTAG","came here ${user.name}")
                binding.tvUserName.text = user.name
+               binding.tvPostCount.text = (context as MainActivity).getRequiredPosts(user.userId).size.toString()
 
                Glide.with(binding.ivUserThumbNailImage.context).
                load(user.url).
