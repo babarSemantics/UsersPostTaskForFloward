@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.anushka.newsapiclient"
+        applicationId "com.babar.task"
         minSdkVersion 26
         targetSdkVersion 32
         versionCode 1
